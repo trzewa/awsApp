@@ -1,0 +1,9 @@
+{	"expiration" : {"day":1},
+	"conditions":
+    [
+	["starts-with", "$key", "pawel.jablonski/"],
+    	{"bucket": "lab4-weeia"},
+    	{"acl": "private"},
+    	["content-length-range", 0, 1048576]
+    ]
+}
