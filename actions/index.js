@@ -1,8 +1,8 @@
 var helpers = require("../helpers");
-var template = "index.html";
-//var S3Form = require("../s3post").S3Form;
-//var Policy = require("../s3post").Policy;
-//var POLICY_FILE = "policy.json";
+var template = "index.ejs";
+var S3Form = require("../s3post").S3Form;
+var Policy = require("../s3post").Policy;
+var POLICY_FILE = "policy.json";
 var AWS = require("aws-sdk");
 var configFilePath = "config.json";
 exports.action = function(request, callback) {
