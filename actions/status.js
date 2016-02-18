@@ -3,7 +3,8 @@ var os = require("os");
 fs = require('fs');
 //accessKeyId ... klucze do amazona 
 AWS.config.loadFromPath('./config.json');
-
+template = "status.ejs";
+prefix = "pawel.jablonski";
 //zawiera funkcje pomocnicze generowania skrótów robienia z jonson obiektu ...
 var helpers = require("../helpers");
 
@@ -16,7 +17,7 @@ var task =  function(request, callback){
 	
 	
 	//$_GET['bucket'], $_GET['key'], $_GET['etag']
-	var key =  request.query.keys;
+	var key =  request.query.key;
 	
 	//parametr do wybrania danych z bazy -- taki select ;p
 	var paramsXXXX = {
@@ -31,13 +32,11 @@ var task =  function(request, callback){
 		if (err) {
 			console.log(err, err.stack); // an error occurred
 		}
-		else {     
-			//console.log(data);           // successful response
-			console.log("Ajax pyta");           // successful response
-			if(data.Attributes){
-				callback(null,data.Attributes[0].Value);
+		else {		
+			if(data.Attributes[0].Value == "yes"){				
+				callback(null, {template: template, params:{send:true}});
 			}else{
-				callback(null,"no");
+				callback(null, {template: template, params:{send:false}});
 			}
 			
 		}
@@ -52,5 +51,6 @@ var task =  function(request, callback){
 			callback(null,data);	
 			//console.log(data);
 	});*/
+
 }
 exports.action = task

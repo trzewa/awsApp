@@ -18,18 +18,19 @@ exports.action = function(request, callback) {
 	var dbParams = {
 	    Attributes: 
             [{
-	       Name:"key",
-	       Value: key,
-	       Replace: false
+	       Name: key,
+	       Value: 'no',
+	       Replace: true
 	    }],
 	    DomainName: 'PawelKrzysiek', 
-	    ItemName: "Sended to queue" 
+	    ItemName: 'ITEM001' 
 	 };
 	 sdb.putAttributes(dbParams, function(err, data) {
 		if (err)
 			callback(null, {template: template, params:{send:true, log:false, keys:keys, prefix:prefix}});
-		else     
-			callback(null, {template: template, params:{send:true, log:true, keys:keys, prefix:prefix}});
+		else{
+			console.log(data);
+		callback(null, {template: template, params:{send:true, log:true, keys:keys, prefix:prefix}});}
 		});
 
 	});
