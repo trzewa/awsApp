@@ -93,7 +93,10 @@
 
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <form action="/status" method="GET">                    
+                <form action="/status" method="GET"> 
+					<% keys.forEach(function(key){ %>
+					<input type="hidden" value="<%= key%>" name="key"/>
+					<%}); %>
                     <center><input type="submit" name="Status" class="btn btn-info" value="Sprawdź status">
                 </form>
             </div>
