@@ -65,12 +65,17 @@
                   <div class="panel-heading">Wynik operacji</div>
                   <div class="panel-body">
                     <br><br>
-                    Usuwanie - wynik dotyczy:<br>
+                    
+                        <%if(del) {%>
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Usunięto z powodzeniem!
+                    <%} else {%>
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Proces zakończony niepowodzeniem!
+                    <%}%>
+                    <br><br>
+					Wynik dotyczy:<br>
+					
                     <% keys.forEach(function(key){ %>
-
-                        <%= key.replace(prefix+"/", "")  %><br>
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Usunięto
-
+					<%= key.replace(prefix+"/", "")  %><br>
                     <%}); %> 
                   </div>
                 </div>
